@@ -1,0 +1,30 @@
+{
+  "name": "seekr",
+  "version": "1.0.0",
+  "description": "seekr app for i dont know what",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alcance/seekr.git"
+  },
+  "keywords": [
+    "seek",
+    "api"
+  ],
+  "author": "Ivan Martinez Aguero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alcance/seekr/issues"
+  },
+  "homepage": "https://github.com/alcance/seekr#readme",
+  "dependencies": {
+    "grant-hapi": "^3.5.5",
+    "hapi": "^13.0.0",
+    "inert": "^3.2.0",
+    "yar": "^7.0.0"
+  }
+}
