@@ -1,0 +1,22 @@
+{
+  "name": "seekr",
+  "homepage": "https://github.com/alcance/seekr",
+  "authors": [
+    "Ivan Martinez"
+  ],
+  "description": "seekr",
+  "main": "bower.json",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-apps": "^1.2.0"
+  }
+}
