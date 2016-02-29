@@ -4,7 +4,9 @@
  */
 console.log('Running...');
 
+// Core stuff
 
+var path = require('path');
 // Hapi: Routing and Server
 var Hapi = require('hapi'),
     yar = require('yar');
@@ -38,10 +40,10 @@ server.route({
 // Main route
 server.route({
     method: 'GET',
-    path: '/',
+    path: '/{params*}',
     handler: function(req, res){
       res.file('./public/index.html');    
-    }
+    } 
 });
 
 // Register server
