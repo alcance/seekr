@@ -3,3 +3,4 @@ app/bower_modules/
 *.swp
 *.swo
 *~
+public/client/
