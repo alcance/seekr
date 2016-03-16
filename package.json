@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "node test",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,16 +15,22 @@
     "seek",
     "api"
   ],
-  "author": "Ivan Martinez Aguero",
+  "authors": [
+    "David Omar Torres",
+    "Ivan Martinez Aguero"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/alcance/seekr/issues"
   },
   "homepage": "https://github.com/alcance/seekr#readme",
   "dependencies": {
+    "express": "^4.13.4",
     "grant-hapi": "^3.5.5",
     "hapi": "^13.0.0",
     "inert": "^3.2.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
     "yar": "^7.0.0"
   }
 }

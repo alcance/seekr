@@ -7,9 +7,10 @@
       "key": "1735904459979881",
       "secret": "387c9011e3ecb785885f797a0c05ecc4",
       "callback": "/handle_facebook_callback",
+      "profileFields" : ["id", "displayName", "photos", "email"],
       "scope": [
         "user_hometown",
         "user_likes"
       ]
-    }   
+    }
 }
