@@ -1,5 +1,5 @@
 node_modules/
-app/bower_modules/
+public/client/bower_components/
 *.swp
 *.swo
 *~
