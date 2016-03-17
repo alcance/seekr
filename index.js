@@ -6,7 +6,7 @@ var express = require('express'),
 
 var router = express.Router();
 var v1 = require('./controllers/v1');
-var user;
+var user = {name:"",last_name:"",email:""};
 
 console.log(config);
 console.log(Strategy);
@@ -21,10 +21,13 @@ console.log(Strategy);
 passport.use(new Strategy({
   clientID: config.facebook.key,
   clientSecret: config.facebook.secret,
-  callbackURL: 'http://localhost:3005/auth/facebook/callback'
+  callbackURL: 'http://localhost:3005/auth/facebook/callback',
+  profileFields: ['id', 'emails', 'name','displayName']
 }, function(accessToken, refreshToken, profile, cb, done) {
   console.log("Auth done");
-  user = cb.displayName;
+  user.name = cb.name.givenName;
+  user.last_name = cb.name.familyName;
+  user.email = cb.emails[0].value;
   done(null, cb);
 }));
 passport.serializeUser(function(user, cb) {
