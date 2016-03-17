@@ -6,6 +6,7 @@ var express = require('express'),
 
 var router = express.Router();
 var v1 = require('./controllers/v1');
+var user;
 
 console.log(config);
 console.log(Strategy);
@@ -23,7 +24,8 @@ passport.use(new Strategy({
   callbackURL: 'http://localhost:3005/auth/facebook/callback'
 }, function(accessToken, refreshToken, profile, cb, done) {
   console.log("Auth done");
-  done(null, profile);
+  user = cb.displayName;
+  done(null, cb);
 }));
 passport.serializeUser(function(user, cb) {
   cb(null, user);
@@ -47,12 +49,15 @@ app.get('/auth/facebook/callback',
   }),
   function(req, res) {
     console.log('Booyah!!');
-    // Successful authentication, redirect home.
-    res.redirect('/');
+    // Successful authentication, show Display Name.
+    console.log(req.user);
+    res.send(user);
   });
+
 app.get('/', function(req, res) {
   res.send('Hello World');
 });
+
 app.use('/v1',v1);
 app.listen(3005,function(){
   console.log('Server Running!!');
