@@ -6,10 +6,10 @@ var express = require('express'),
 
 var router = express.Router();
 var v1 = require('./controllers/v1');
-var user = {name:"",last_name:"",email:""};
+var user = {name:"",last_name:"",email:"",location:""};
 
-console.log(config);
-console.log(Strategy);
+//console.log(config);
+//console.log(Strategy);
 // Configure Facebook strategy for Passport
 // Configure the Facebook strategy for use by Passport.
 //
@@ -22,12 +22,13 @@ passport.use(new Strategy({
   clientID: config.facebook.key,
   clientSecret: config.facebook.secret,
   callbackURL: 'http://localhost:3005/auth/facebook/callback',
-  profileFields: ['id', 'emails', 'name','displayName']
+  profileFields: ['id','name','displayName','photos','emails' ,'hometown','location' ,'profileUrl', 'friends']
 }, function(accessToken, refreshToken, profile, cb, done) {
-  console.log("Auth done");
-  user.name = cb.name.givenName;
-  user.last_name = cb.name.familyName;
-  user.email = cb.emails[0].value;
+  console.log(cb._json); //dentro del objeto del perfil, existe el objeto JSON con los datos requeridos
+  user.name = cb._json.first_name;
+  user.last_name = cb._json.last_name;
+  user.email = cb._json.email;
+  user.location = cb._json.location;
   done(null, cb);
 }));
 passport.serializeUser(function(user, cb) {
@@ -41,19 +42,15 @@ passport.deserializeUser(function(obj, cb) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', passport.authenticate('facebook',{ scope: ['email', 'public_profile', 'user_location'] }));
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
     failureRedirect: '/v1',
-    scope: [
-      'user_friends',
-      'email'
-    ]
+    scope: ['email', 'public_profile', 'user_location']
   }),
   function(req, res) {
-    console.log('Booyah!!');
     // Successful authentication, show Display Name.
-    console.log(req.user);
+    //console.log(req);
     res.send(user);
   });
 
