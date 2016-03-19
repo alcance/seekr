@@ -9,7 +9,7 @@ console.log('Running...');
 var path = require('path');
 // Hapi: Routing and Server
 var Hapi = require('hapi'),
-    yar = require('yar');
+    yar = require('yar');//no vamos a usar HAPI!!!!
 
 // Authentication
 var Grant = require('grant-hapi'),
