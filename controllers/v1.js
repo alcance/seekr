@@ -5,6 +5,7 @@ var express = require('express'),
     mongoose = require('mongoose');
 
 mongoose.connect('mongodb://192.168.33.25:27017/test');
+//mongoose.connect('mongodb://localhost:27017/test');
 
 router.get('/',function(req,res){
   res.send('V1 Router');

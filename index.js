@@ -5,7 +5,7 @@ var express = require('express'),
     config = require('./config.json'),
     bodyParser = require('body-parser'),
     router = express.Router();
-    
+
 var v1 = require('./controllers/v1');
 var auth = require('./controllers/auth');
 

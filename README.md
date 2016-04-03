@@ -1,2 +1,3 @@
 # seekr
-Seekr app for i dont know what.
+Look for cool developers around you!
+Booyah!

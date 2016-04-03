@@ -20,9 +20,38 @@ var express = require('express'),
       clientSecret: config.facebook.secret,
       callbackURL: 'http://localhost:3005/auth/facebook/callback',
       profileFields: ['id','name','displayName','photos','emails' ,'hometown','location' ,'profileUrl', 'friends']
-    }, function(accessToken, refreshToken, profile, cb, done) {
-      User.name = cb.name;
-      done(null,cb);
+    }, function(accessToken, refreshToken, profile, done) {
+
+      console.log('User profile', profile);
+
+      //Find user or create one.
+      User.findOne({
+        facebookId: profile.id
+      }, function(err, user){
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          // No user has been found
+          user = new User({
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            username: profile.username,
+            provider: 'facebook',
+            facebook: profile._json
+          });
+
+          // Save user
+          user.save(function(err){
+            if (err) console.log(err);
+            return done(err, user);
+          });
+        } else {
+          // Found user
+          return done(err, user);
+        }
+      });
+      //done(null,cb);
     }));
 
     passport.serializeUser(function(user, cb) {
@@ -42,7 +71,7 @@ var express = require('express'),
       scope: ['email', 'public_profile', 'user_location']
     }),
     function(req,res){
-      console.log('Conectado');
+      console.log('Sucessfully connected.');
       console.log(User);
       res.redirect('/');
     });
