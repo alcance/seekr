@@ -1,15 +1,15 @@
 var express = require('express');
-var path = require('path');
-var passport = require('passport');
-var Strategy = require('passport-facebook');
-var config = require('./config.json');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var routes = require('./routes/v1');
-var auth = require('./routes/auth');
-var app = express();
+    path = require('path'),
+    passport = require('passport'),
+    Strategy = require('passport-facebook'),
+    config = require('./config.json'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    routes = require('./routes/v1'),
+    auth = require('./routes/auth'),
+    app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
