@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Seekr : Find Developers around the globe.</title>
+        <link rel="stylesheet" href="./client/bower_components/foundation-apps/dist/css/foundation-apps.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Login with Facebook</h1>
+            <form action="auth/facebook" method="post" accept-charset="utf-8">
+                <input type="text" name="state" value="" />
+                <label for="state">State</label>
+                <input type="checkbox" name="scope" value="read" />
+                <input type="checkbox" name="scope" value="write" />
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <script src="./client/bower_components/angular/angular.min.js"></script>
+        <script src="./client/bower_components/foundation-apps/dist/js/foundation-apps.min.js"></script>
+        <script src="./client/bower_components/foundation-apps/dist/js/foundation-apps-templates.js"></script>
+    </body>
+</html>
