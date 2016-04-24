@@ -16,5 +16,5 @@ app.get('/', function(req, res) {
 app.use('/v1',v1); //API de V1
 app.use('/auth',auth); // Todo lo que tenga que ver con auth
 app.listen(3005,function(){
-  console.log('Server Running!!');
+  console.log('Server running at:', app);
 });

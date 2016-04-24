@@ -18,7 +18,7 @@ var express = require('express'),
     passport.use(new Strategy({
       clientID: config.facebook.key,
       clientSecret: config.facebook.secret,
-      callbackURL: 'http://localhost:3005/auth/facebook/callback',
+      callbackURL: 'http://localhost:3000/auth/facebook/callback',
       profileFields: ['id','name','displayName','photos','emails' ,'hometown','location' ,'profileUrl', 'friends']
     }, function(accessToken, refreshToken, profile, done) {
 
@@ -64,9 +64,9 @@ var express = require('express'),
 
     router.use(passport.initialize());
     router.use(passport.session());
-    router.get('/facebook',passport.authenticate('facebook'));
+    router.get('/facebook', passport.authenticate('facebook', { scope: 'email'}));
 
-    router.get('/facebook/callback',passport.authenticate('facebook',{
+    router.get('/facebook/callback', passport.authenticate('facebook', {
       failureRedirect:'/v1',
       scope: ['email', 'public_profile', 'user_location']
     }),
