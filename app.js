@@ -1,17 +1,15 @@
-var express = require('express'),
-    path = require('path'),
-    app = express();
-    passport = require('passport'),
-    Strategy = require('passport-facebook'),
-    config = require('./config.json'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    router = express.Router();
-    routes = require('./routes/v1'),
-    auth = require('./routes/auth')
-    users = require('./routes/users'),
+var express = require('express');
+var path = require('path');
+var passport = require('passport');
+var Strategy = require('passport-facebook');
+var config = require('./config.json');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var routes = require('./routes/v1');
+var auth = require('./routes/auth');
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,13 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/auth', auth);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('404: Not Found ' + req.originalUrl); //here
+    err.status = 404;
+    next(err);
 });
 
 // error handlers

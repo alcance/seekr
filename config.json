@@ -1,7 +1,7 @@
 {
     "server": {
       "protocol": "http",
-      "host": "localhost:3005"
+      "host": "localhost:3000"
     },
     "facebook": {
       "key": "1735904459979881",

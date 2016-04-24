@@ -2,9 +2,8 @@
   "name": "seekr",
   "version": "1.0.0",
   "description": "Look for developers around you.",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "test": "node test",
     "start": "node ./bin/www"
   },
   "repository": {
