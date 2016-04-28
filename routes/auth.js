@@ -35,7 +35,12 @@ var express = require('express'),
           // No user has been found
           user = new User({
             name: profile.displayName,
-            email: profile.emails[0].value,
+            email: function() {
+              if (!profile.emails[0].value) {
+                return ''
+              }
+              return profile.emails[0].value;
+            },
             username: profile.username,
             provider: 'facebook',
             facebook: profile._json
